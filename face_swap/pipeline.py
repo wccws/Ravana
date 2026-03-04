@@ -28,8 +28,15 @@ from .alignment import FaceAligner
 from .blending import FaceBlender
 from .core.profiler import PipelineProfiler
 from .core.quality import QualityCode, QualityValidator
-from .core.types import (AlignedFace, Embedding, FaceBBox, Frame, Landmarks,
-                         PipelineResult, SwapResult)
+from .core.types import (
+    AlignedFace,
+    Embedding,
+    FaceBBox,
+    Frame,
+    Landmarks,
+    PipelineResult,
+    SwapResult,
+)
 from .detection import AsyncFaceDetector, FaceDetector, RetinaFaceDetector
 from .embedding import ArcFaceEmbedder, IdentityEmbedder
 from .landmarks import LandmarkDetector, MediaPipeLandmarkDetector

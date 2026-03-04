@@ -217,8 +217,9 @@ class CodeFormerEnhancer(FaceEnhancer):
         # here we provide the integration hook.
         try:
             from codeformer.basicsr.utils import img2tensor, tensor2img
-            from codeformer.facelib.utils.face_restoration_helper import \
-                FaceRestoreHelper
+            from codeformer.facelib.utils.face_restoration_helper import (
+                FaceRestoreHelper,
+            )
             from codeformer.inference_codeformer import set_realesrgan
 
             self._available = True

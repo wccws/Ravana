@@ -9,8 +9,11 @@ import pytest
 import yaml
 
 from face_swap.api import FaceSwapConfig
-from face_swap.core.config_loader import (load_config, load_face_swap_config,
-                                          load_pipeline_config)
+from face_swap.core.config_loader import (
+    load_config,
+    load_face_swap_config,
+    load_pipeline_config,
+)
 from face_swap.pipeline import PipelineConfig
 
 

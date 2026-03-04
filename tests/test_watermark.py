@@ -5,9 +5,11 @@ Tests for the watermarking module.
 import numpy as np
 import pytest
 
-from face_swap.watermark.watermarker import (InvisibleWatermarker,
-                                             ProvenanceMetadata,
-                                             WatermarkConfig)
+from face_swap.watermark.watermarker import (
+    InvisibleWatermarker,
+    ProvenanceMetadata,
+    WatermarkConfig,
+)
 
 
 @pytest.fixture

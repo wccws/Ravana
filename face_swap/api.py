@@ -332,6 +332,7 @@ def batch_swap(
 
 
 from .core.types import AlignedFace, Embedding, FaceBBox, Landmarks, SwapResult
+
 # Low-level API exports for advanced users
 from .pipeline import FaceSwapPipeline, PipelineConfig
 

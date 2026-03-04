@@ -200,8 +200,7 @@ class OpticalFlowSmoother:
         """
         try:
             import torch
-            from torchvision.models.optical_flow import (Raft_Small_Weights,
-                                                         raft_small)
+            from torchvision.models.optical_flow import Raft_Small_Weights, raft_small
 
             device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 

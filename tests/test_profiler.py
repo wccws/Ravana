@@ -6,8 +6,7 @@ import time
 
 import pytest
 
-from face_swap.core.profiler import (BenchmarkReport, PipelineProfiler,
-                                     StageTimings)
+from face_swap.core.profiler import BenchmarkReport, PipelineProfiler, StageTimings
 
 
 @pytest.fixture

@@ -7,20 +7,31 @@ A production-ready SDK for face swapping on images, pre-recorded video, and live
 __version__ = "0.2.0"
 __author__ = "Face Swap Team"
 
-from .api import (FaceSwapConfig, batch_swap, start_realtime_swap, swap_image,
-                  swap_video)
+from .api import FaceSwapConfig, batch_swap, start_realtime_swap, swap_image, swap_video
 from .audio import AudioProcessor
-from .core.config_loader import (load_config, load_face_swap_config,
-                                 load_pipeline_config)
+from .core.config_loader import load_config, load_face_swap_config, load_pipeline_config
 from .core.model_manager import ModelInfo, ModelManager
 from .core.model_router import ModelProfile, ModelRouter, SceneType
 from .core.profiler import BenchmarkReport, PipelineProfiler, StageTimings
 from .core.quality import QualityCode, QualityReport, QualityValidator
-from .core.types import (AlignedFace, Embedding, FaceBBox, Landmarks,
-                         PipelineResult, SwapResult)
+from .core.types import (
+    AlignedFace,
+    Embedding,
+    FaceBBox,
+    Landmarks,
+    PipelineResult,
+    SwapResult,
+)
+
 # Phase 2 modules
-from .enhancement import (CodeFormerEnhancer, EnhancementConfig, FaceEnhancer,
-                          GFPGANEnhancer, RealESRGANEnhancer, create_enhancer)
+from .enhancement import (
+    CodeFormerEnhancer,
+    EnhancementConfig,
+    FaceEnhancer,
+    GFPGANEnhancer,
+    RealESRGANEnhancer,
+    create_enhancer,
+)
 from .filters import ARFilterEngine, FilterGallery, FilterPreset, OverlayMode
 from .pipeline import FaceSwapPipeline, PipelineConfig
 from .plugins import PluginInfo, PluginRegistry, get_registry, register_plugin
