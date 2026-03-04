@@ -5,7 +5,7 @@ As per PRD Section 5.4, this normalizes faces (rotation, scale)
 and crops aligned face regions to standard sizes expected by the swap model.
 """
 
-from typing import Optional, Tuple
+from typing import Tuple
 
 import cv2
 import numpy as np

@@ -4,7 +4,7 @@ ArcFace embedding extractor using InsightFace.
 As per PRD Section 5.5, this uses ArcFace-style encoder for identity embeddings.
 """
 
-from typing import List, Optional
+from typing import Optional
 
 import cv2
 import numpy as np

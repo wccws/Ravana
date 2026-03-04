@@ -5,8 +5,8 @@ This module defines typed data structures for communication between pipeline sta
 as specified in the PRD Section 7.1.
 """
 
-from dataclasses import dataclass, field
-from typing import List, Optional, Tuple, Union
+from dataclasses import dataclass
+from typing import List, Optional, Tuple
 
 import numpy as np
 

@@ -5,7 +5,6 @@ Validates the typed data structures defined in PRD Section 7.1.
 """
 
 import numpy as np
-import pytest
 
 from face_swap.core.types import (
     AlignedFace,

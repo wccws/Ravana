@@ -5,9 +5,6 @@ As per PRD Section 5.4, this defines the common interface for all landmark detec
 """
 
 from abc import ABC, abstractmethod
-from typing import Optional
-
-import numpy as np
 
 from ..core.types import FaceBBox, Frame, Landmarks
 
@@ -42,7 +39,6 @@ class LandmarkDetector(ABC):
         Returns:
             Landmarks object with facial keypoints
         """
-        pass
 
     @abstractmethod
     def detect_multi(self, frame: Frame, bboxes: list) -> list:
@@ -56,9 +52,7 @@ class LandmarkDetector(ABC):
         Returns:
             List of Landmarks objects (one per bbox)
         """
-        pass
 
     @abstractmethod
     def load_model(self) -> None:
         """Load the landmark detection model."""
-        pass

@@ -13,8 +13,8 @@ This module provides:
 
 import importlib
 import logging
-from dataclasses import dataclass, field
-from typing import Any, Callable, Dict, List, Optional, Type, TypeVar
+from dataclasses import dataclass
+from typing import Dict, List, Optional, TypeVar
 
 logger = logging.getLogger("face_swap.plugins")
 

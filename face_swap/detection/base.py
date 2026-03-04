@@ -8,8 +8,6 @@ to allow plugging in alternative detectors.
 from abc import ABC, abstractmethod
 from typing import List, Optional
 
-import numpy as np
-
 from ..core.types import FaceBBox, Frame
 
 
@@ -43,12 +41,10 @@ class FaceDetector(ABC):
         Returns:
             List of FaceBBox objects with detection confidence
         """
-        pass
 
     @abstractmethod
     def load_model(self) -> None:
         """Load the detection model."""
-        pass
 
     def detect_single(self, frame: Frame) -> Optional[FaceBBox]:
         """

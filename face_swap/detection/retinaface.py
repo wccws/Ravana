@@ -5,10 +5,9 @@ As per PRD Section 5.3, this is the default detector for high-accuracy face dete
 Supports detecting frontal and moderately profile faces (yaw up to ±45 degrees).
 """
 
-from typing import List, Optional
+from typing import List
 
 import cv2
-import numpy as np
 
 from ..core.types import FaceBBox, Frame
 from .base import FaceDetector
@@ -48,7 +47,6 @@ class RetinaFaceDetector(FaceDetector):
     def load_model(self) -> None:
         """Load the RetinaFace model using InsightFace."""
         try:
-            import insightface
             from insightface.app import FaceAnalysis
         except ImportError:
             raise ImportError(

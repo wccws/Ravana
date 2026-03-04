@@ -13,11 +13,9 @@ This module provides:
 """
 
 import logging
-import os
 import platform
-import sys
 from dataclasses import dataclass
-from typing import Optional, Tuple
+from typing import Optional
 
 logger = logging.getLogger("face_swap.platform.apple")
 
@@ -64,7 +62,7 @@ def detect_apple_device() -> AppleDeviceInfo:
 
     # Check ANE via CoreML
     try:
-        import coremltools
+        pass
 
         info.has_ane = is_arm
     except ImportError:

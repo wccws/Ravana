@@ -7,7 +7,7 @@ color, and position when processing video using optical flow and tracking.
 
 from collections import deque
 from dataclasses import dataclass
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional
 
 import cv2
 import numpy as np

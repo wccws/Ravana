@@ -103,7 +103,7 @@ class SimSwapModel(FaceSwapper):
         # In practice, this would load the actual SimSwap generator architecture
         self._generator = None  # Would be the actual model
 
-        checkpoint = torch.load(path, map_location=self.device)
+        _ = torch.load(path, map_location=self.device)
         # Load weights...
 
     def swap(

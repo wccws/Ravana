@@ -15,9 +15,8 @@ This module provides:
 import logging
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
-from typing import Optional, Tuple
+from typing import Optional
 
-import cv2
 import numpy as np
 
 logger = logging.getLogger("face_swap.enhancement")
@@ -209,18 +208,12 @@ class CodeFormerEnhancer(FaceEnhancer):
         except ImportError:
             raise ImportError("PyTorch is required for CodeFormer.")
 
-        import torch
-
         self._device = torch.device(self.config.device)
 
         # CodeFormer is typically loaded via its own inference utility;
         # here we provide the integration hook.
         try:
-            from codeformer.basicsr.utils import img2tensor, tensor2img
-            from codeformer.facelib.utils.face_restoration_helper import (
-                FaceRestoreHelper,
-            )
-            from codeformer.inference_codeformer import set_realesrgan
+            pass
 
             self._available = True
         except ImportError:

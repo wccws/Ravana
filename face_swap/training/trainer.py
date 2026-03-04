@@ -13,13 +13,10 @@ This module provides:
   - TensorBoard logging integration.
 """
 
-import json
 import logging
 import os
-import time
 from dataclasses import dataclass, field
-from pathlib import Path
-from typing import Any, Callable, Dict, List, Optional
+from typing import Dict, List, Optional
 
 import numpy as np
 
@@ -121,10 +118,6 @@ class FaceSwapTrainer:
             self.config.batch_size,
             self.config.resolution,
         )
-
-        import torch
-        import torch.nn.functional as F
-
         start_epoch = self.state.epoch
         for epoch in range(start_epoch, self.config.num_epochs):
             self.state.epoch = epoch
@@ -196,7 +189,6 @@ class FaceSwapTrainer:
         Returns:
             Dict with evaluation metrics (id_sim, psnr, ssim, fid).
         """
-        import torch
 
         if self._generator is None:
             raise RuntimeError("No model loaded.")
@@ -235,7 +227,6 @@ class FaceSwapTrainer:
     def _setup(self) -> None:
         """Initialise models, optimisers, and data loaders."""
         import torch
-        import torch.nn as nn
 
         cfg = self.config
         os.makedirs(cfg.output_dir, exist_ok=True)
@@ -277,7 +268,6 @@ class FaceSwapTrainer:
 
     def _build_generator(self):
         """Build the generator (swap model) network."""
-        import torch
         import torch.nn as nn
 
         res = self.config.resolution
@@ -391,7 +381,6 @@ class FaceSwapTrainer:
 
     def _build_dataloader(self):
         """Build training data loader."""
-        import torch
         from torch.utils.data import DataLoader, Dataset
 
         class FaceDataset(Dataset):
@@ -418,7 +407,6 @@ class FaceSwapTrainer:
                 return max(len(self.image_paths), 1)
 
             def __getitem__(self, idx):
-                import cv2 as _cv2
                 import torch as _torch
 
                 # Same-identity pair
@@ -464,7 +452,6 @@ class FaceSwapTrainer:
     def _train_epoch(self, epoch: int) -> Dict[str, float]:
         """Train for one epoch; return average losses."""
         import torch
-        import torch.nn.functional as F
 
         self._generator.train()
         self._discriminator.train()

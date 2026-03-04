@@ -146,8 +146,7 @@ class ARFilterEngine:
     """
 
     def __init__(self, device: str = "cuda", quality: str = "medium"):
-        from face_swap.api import FaceSwapConfig
-        from face_swap.pipeline import FaceSwapPipeline, PipelineConfig
+        from face_swap.pipeline import FaceSwapPipeline
 
         self._device = device
         self._quality = quality
@@ -440,8 +439,8 @@ class ARFilterEngine:
 
         # Simple contrast/brightness adjustment as fallback
         lab = cv2.cvtColor(result, cv2.COLOR_BGR2LAB)
-        l, a, b = cv2.split(lab)
+        l_channel, a, b = cv2.split(lab)
         clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
-        l = clahe.apply(l)
-        enhanced = cv2.merge([l, a, b])
+        l_channel = clahe.apply(l_channel)
+        enhanced = cv2.merge([l_channel, a, b])
         return cv2.cvtColor(enhanced, cv2.COLOR_LAB2BGR)

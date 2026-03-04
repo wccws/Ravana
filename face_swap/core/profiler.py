@@ -18,7 +18,7 @@ import time
 from collections import deque
 from contextlib import contextmanager
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional
+from typing import Dict, Optional
 
 logger = logging.getLogger("face_swap.profiler")
 

@@ -13,9 +13,8 @@ This module extends the base TemporalSmoother with:
 """
 
 import logging
-from collections import deque
 from dataclasses import dataclass
-from typing import Deque, Dict, List, Optional, Tuple
+from typing import Dict, Optional
 
 import cv2
 import numpy as np

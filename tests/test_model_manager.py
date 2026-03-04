@@ -2,8 +2,6 @@
 Tests for the model manager module.
 """
 
-import json
-import tempfile
 from pathlib import Path
 
 import pytest

@@ -5,7 +5,7 @@ As per PRD Section 5.4, this provides 468-point dense facial landmarks
 for robust face alignment.
 """
 
-from typing import List, Optional
+from typing import List
 
 import cv2
 import numpy as np

@@ -6,14 +6,10 @@ into the original frame using Poisson blending or alpha blending with
 color correction.
 """
 
-from typing import Optional, Tuple
-
 import cv2
 import numpy as np
-from scipy.sparse import csr_matrix
-from scipy.sparse.linalg import spsolve
 
-from ..core.types import AlignedFace, Frame, SwapResult
+from ..core.types import Frame, SwapResult
 
 
 class FaceBlender:

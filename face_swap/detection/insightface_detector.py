@@ -4,10 +4,9 @@ Alternative detector using InsightFace's face analysis directly.
 This provides both detection and recognition in one pass.
 """
 
-from typing import List, Optional, Tuple
+from typing import List, Tuple
 
 import cv2
-import numpy as np
 
 from ..core.types import Embedding, FaceBBox, Frame, Landmarks
 from .base import FaceDetector

@@ -8,13 +8,11 @@ As per PRD Section 9.1, this provides simple high-level functions:
 """
 
 from dataclasses import dataclass
-from pathlib import Path
 from typing import Callable, List, Optional, Union
 
 import cv2
-import numpy as np
 
-from .core.types import Embedding, Frame
+from .core.types import AlignedFace, Embedding, FaceBBox, Frame, Landmarks, SwapResult
 from .pipeline import FaceSwapPipeline, PipelineConfig
 
 
@@ -331,10 +329,7 @@ def batch_swap(
     return output_files
 
 
-from .core.types import AlignedFace, Embedding, FaceBBox, Landmarks, SwapResult
-
 # Low-level API exports for advanced users
-from .pipeline import FaceSwapPipeline, PipelineConfig
 
 __all__ = [
     # High-level API

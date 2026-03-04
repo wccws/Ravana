@@ -2,7 +2,6 @@
 Tests for the quality validator module.
 """
 
-import cv2
 import numpy as np
 import pytest
 

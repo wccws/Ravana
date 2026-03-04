@@ -16,7 +16,7 @@ from typing import Optional, Tuple
 import cv2
 import numpy as np
 
-from .types import AlignedFace, FaceBBox, Frame, SwapResult
+from .types import FaceBBox, SwapResult
 
 logger = logging.getLogger("face_swap.quality")
 

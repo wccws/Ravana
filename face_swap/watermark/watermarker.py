@@ -12,9 +12,9 @@ common image processing operations (resize, mild compression, small crops).
 
 import hashlib
 import json
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from datetime import datetime, timezone
-from typing import Optional, Tuple
+from typing import Optional
 
 import cv2
 import numpy as np

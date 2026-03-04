@@ -6,7 +6,7 @@ with target frame features to generate a swapped face.
 """
 
 from abc import ABC, abstractmethod
-from typing import List, Optional, Tuple
+from typing import List, Optional
 
 import numpy as np
 
@@ -56,7 +56,6 @@ class FaceSwapper(ABC):
         Returns:
             SwapResult with swapped face and mask
         """
-        pass
 
     def swap_multi(
         self,
@@ -83,7 +82,6 @@ class FaceSwapper(ABC):
         Args:
             model_path: Path to model weights (optional)
         """
-        pass
 
     @abstractmethod
     def get_mask(self, swapped_face: np.ndarray) -> np.ndarray:
@@ -96,4 +94,3 @@ class FaceSwapper(ABC):
         Returns:
             Binary or soft mask
         """
-        pass

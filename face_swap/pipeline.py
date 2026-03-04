@@ -17,25 +17,17 @@ Additionally integrates:
 """
 
 import logging
-import time
 from dataclasses import dataclass
-from typing import Callable, List, Optional, Union
-
-import cv2
-import numpy as np
+from typing import List, Optional, Union
 
 from .alignment import FaceAligner
 from .blending import FaceBlender
 from .core.profiler import PipelineProfiler
-from .core.quality import QualityCode, QualityValidator
+from .core.quality import QualityValidator
 from .core.types import (
-    AlignedFace,
     Embedding,
-    FaceBBox,
     Frame,
-    Landmarks,
     PipelineResult,
-    SwapResult,
 )
 from .detection import AsyncFaceDetector, FaceDetector, RetinaFaceDetector
 from .embedding import ArcFaceEmbedder, IdentityEmbedder

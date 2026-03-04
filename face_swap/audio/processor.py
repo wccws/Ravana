@@ -16,8 +16,7 @@ import os
 import shutil
 import subprocess
 import tempfile
-from pathlib import Path
-from typing import List, Optional, Tuple
+from typing import Optional
 
 logger = logging.getLogger("face_swap.audio")
 

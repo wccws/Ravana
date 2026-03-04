@@ -20,7 +20,7 @@ Usage:
 import logging
 import os
 import time
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional
 
 import numpy as np
 

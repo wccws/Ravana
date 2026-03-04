@@ -20,9 +20,7 @@ Usage:
 
 import ctypes
 import ctypes.util
-import os
 import platform
-import sys
 from pathlib import Path
 from typing import Optional
 

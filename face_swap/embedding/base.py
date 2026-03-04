@@ -6,7 +6,7 @@ that capture identity but are invariant to expression and lighting.
 """
 
 from abc import ABC, abstractmethod
-from typing import List, Optional, Union
+from typing import List
 
 import numpy as np
 
@@ -41,7 +41,6 @@ class IdentityEmbedder(ABC):
         Returns:
             Embedding vector
         """
-        pass
 
     def extract_multi(self, aligned_faces: List[AlignedFace]) -> List[Embedding]:
         """
@@ -84,4 +83,3 @@ class IdentityEmbedder(ABC):
     @abstractmethod
     def load_model(self) -> None:
         """Load the embedding model."""
-        pass
